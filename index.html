@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mjesečina — ručno rađene vrteške za bebe</title>
+<meta name="description" content="Ručno rađene vrteške iznad krevetca. Drveni obruč, muzički mehanizam i motivi po vašem izboru.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Manrope:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#241C3B;
+  --night-2:#3A2E5E;
+  --night-3:#150F27;
+  --milk:#F5F3FA;
+  --paper:#FFFFFF;
+  --ink:#221E2E;
+  --muted:#6F6982;
+  --peri:#7E77D8;
+  --peri-deep:#5F57BC;
+  --peri-soft:#E5E2F9;
+  --butter:#F7C873;
+  --rose:#E9A7B8;
+  --sage:#A9C7B4;
+  --line:rgba(34,30,46,.10);
+  --line-2:rgba(34,30,46,.06);
+  --shadow-s:0 2px 8px rgba(36,28,59,.05);
+  --shadow-m:0 14px 34px -18px rgba(36,28,59,.30);
+  --shadow-l:0 40px 80px -40px rgba(36,28,59,.45);
+  --r-xl:34px; --r-lg:24px; --r-md:16px; --r-sm:10px;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+  --pad:clamp(18px,4vw,32px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--milk);color:var(--ink);
+  font-family:var(--body);font-size:16.5px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2.5px solid var(--peri);outline-offset:3px;border-radius:4px}
+
+h1,h2,h3,h4{font-family:var(--display);font-variation-settings:"SOFT" 45,"WONK" 1;font-weight:500;line-height:1.06;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(2.5rem,7.2vw,4.6rem)}
+h2{font-size:clamp(2rem,4.6vw,3.1rem)}
+h3{font-size:clamp(1.25rem,2.2vw,1.6rem);line-height:1.15}
+p{margin:0}
+em{font-style:italic;font-variation-settings:"SOFT" 60,"WONK" 1}
+
+.wrap{width:min(1180px,100% - clamp(28px,7vw,80px));margin-inline:auto}
+.section{padding:clamp(68px,9vw,124px) 0}
+.eyebrow{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--peri-deep);display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--butter);flex:none}
+.eyebrow.on-dark{color:var(--butter)}
+.eyebrow.on-dark::before{background:var(--rose)}
+.lede{color:var(--muted);font-size:clamp(1rem,1.5vw,1.12rem);max-width:56ch}
+.mono{font-family:var(--mono)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 26px;border-radius:999px;font-weight:600;font-size:.96rem;
+  transition:transform .25s cubic-bezier(.2,.8,.3,1),background .25s,color .25s,box-shadow .25s;
+  white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--night);color:#fff;box-shadow:var(--shadow-m)}
+.btn-primary:hover{background:var(--peri-deep)}
+.btn-light{background:#fff;color:var(--night);box-shadow:var(--shadow-m)}
+.btn-light:hover{background:var(--butter)}
+.btn-ghost{border:1.5px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--night);background:#fff}
+.btn-block{width:100%}
+.btn[disabled]{opacity:.45;pointer-events:none}
+
+/* ---------- header ---------- */
+.hdr{
+  position:fixed;inset:0 0 auto;z-index:60;padding:14px 0;
+  transition:background .3s,box-shadow .3s,padding .3s,backdrop-filter .3s;
+}
+.hdr.solid{background:rgba(245,243,250,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:8px 0}
+.hdr-in{display:flex;align-items:center;gap:22px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-size:1.32rem;font-variation-settings:"SOFT" 50,"WONK" 1;letter-spacing:-.02em;color:#fff;transition:color .3s}
+.hdr.solid .brand{color:var(--ink)}
+.brand svg{flex:none}
+.brand .mark-line{stroke:currentColor}
+.nav{display:flex;gap:6px;margin-left:auto}
+.nav a{
+  padding:9px 15px;border-radius:999px;font-size:.93rem;font-weight:500;color:rgba(255,255,255,.82);
+  transition:background .2s,color .2s;
+}
+.nav a:hover{background:rgba(255,255,255,.14);color:#fff}
+.hdr.solid .nav a{color:var(--muted)}
+.hdr.solid .nav a:hover{background:#fff;color:var(--ink)}
+.hdr-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+.nav+.hdr-actions{margin-left:0}
+.cart-btn{
+  display:flex;align-items:center;gap:9px;padding:10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.15);color:#fff;font-weight:600;font-size:.9rem;
+  border:1px solid rgba(255,255,255,.22);transition:.25s;
+}
+.cart-btn:hover{background:#fff;color:var(--night);border-color:#fff}
+.hdr.solid .cart-btn{background:var(--night);color:#fff;border-color:var(--night)}
+.hdr.solid .cart-btn:hover{background:var(--peri-deep)}
+.cart-count{
+  min-width:21px;height:21px;padding:0 6px;border-radius:999px;background:var(--butter);color:var(--night);
+  font-family:var(--mono);font-size:.74rem;display:grid;place-items:center;transition:transform .3s cubic-bezier(.2,1.5,.4,1);
+}
+.cart-count.pop{transform:scale(1.45)}
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);place-items:center;color:#fff}
+.hdr.solid .burger{border-color:var(--line);color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;background:
+    radial-gradient(120% 90% at 78% 8%,#4A3A79 0%,rgba(74,58,121,0) 55%),
+    radial-gradient(90% 70% at 8% 92%,#3B2F62 0%,rgba(59,47,98,0) 60%),
+    linear-gradient(168deg,#2A2049 0%,#1A1332 100%);
+  color:#fff;padding:clamp(130px,17vw,190px) 0 clamp(90px,13vw,140px);overflow:hidden;
+}
+.stars{position:absolute;inset:0;pointer-events:none}
+.star-dot{position:absolute;background:#fff;border-radius:50%;animation:twinkle 4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:.85;transform:scale(1)}}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(30px,5vw,64px);align-items:center;position:relative;z-index:2}
+.hero h1{color:#fff}
+.hero h1 .glow{
+  background:linear-gradient(96deg,var(--butter),#FFE7B8 40%,var(--rose));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-style:italic;font-variation-settings:"SOFT" 70,"WONK" 1;
+}
+.hero p.lede{color:rgba(255,255,255,.76);margin-top:22px;max-width:44ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:42px;padding-top:26px;border-top:1px solid rgba(255,255,255,.14)}
+.hero-meta span{display:flex;align-items:center;gap:9px;font-size:.87rem;color:rgba(255,255,255,.72)}
+.hero-meta svg{flex:none;color:var(--butter)}
+.hero-art{position:relative;display:grid;place-items:center}
+.hero-art::after{
+  content:"";position:absolute;width:62%;aspect-ratio:1;border-radius:50%;top:6%;
+  background:radial-gradient(circle,rgba(247,200,115,.30),rgba(247,200,115,0) 68%);filter:blur(6px);
+}
+.hero-art svg{position:relative;z-index:1;width:min(430px,88%);height:auto;overflow:visible}
+.hero-wave{position:absolute;left:0;right:0;bottom:-1px;line-height:0;color:var(--milk)}
+.hero-wave svg{width:100%;height:auto;display:block}
+
+/* the mobile (vrteška) animation */
+@keyframes sway{0%,100%{transform:rotate(-2.4deg)}50%{transform:rotate(2.4deg)}}
+@keyframes swayWide{0%,100%{transform:rotate(-1.1deg)}50%{transform:rotate(1.1deg)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.hang{animation:sway 5s ease-in-out infinite}
+.hoop{animation:swayWide 11s ease-in-out infinite}
+
+/* ---------- strip ---------- */
+.strip{background:var(--paper);border-block:1px solid var(--line-2)}
+.strip-in{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);padding:clamp(34px,4.5vw,52px) 0}
+.strip-item{display:flex;gap:16px;align-items:flex-start}
+.strip-item .ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:none;background:var(--peri-soft);color:var(--peri-deep)}
+.strip-item h4{font-family:var(--body);font-weight:700;font-size:1rem;letter-spacing:0;margin-bottom:3px}
+.strip-item p{font-size:.9rem;color:var(--muted);line-height:1.5}
+
+/* ---------- products ---------- */
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(28px,4vw,46px)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  padding:9px 17px;border-radius:999px;border:1.5px solid var(--line);font-size:.87rem;font-weight:600;
+  color:var(--muted);background:#fff;transition:.22s;
+}
+.chip:hover{border-color:var(--night);color:var(--ink)}
+.chip.on{background:var(--night);border-color:var(--night);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:clamp(16px,2.2vw,28px)}
+.card{
+  background:var(--paper);border:1px solid var(--line-2);border-radius:var(--r-lg);overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s,border-color .35s;
+  animation:fadeUp .5s cubic-bezier(.2,.8,.3,1) backwards;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-l);border-color:transparent}
+.card-art{position:relative;aspect-ratio:4/4.5;display:grid;place-items:center;cursor:pointer;overflow:hidden}
+.card-art svg{width:92%;height:auto;overflow:visible;transition:transform .5s cubic-bezier(.2,.8,.3,1)}
+.card:hover .card-art svg{transform:scale(1.045)}
+.badge{
+  position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.9);
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--night);
+  backdrop-filter:blur(4px);
+}
+.card-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-body h3{font-size:1.22rem}
+.card-cat{font-family:var(--mono);font-size:.71rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:16px}
+.price{font-family:var(--mono);font-size:1.06rem;font-weight:500}
+.add{
+  width:44px;height:44px;border-radius:50%;background:var(--peri-soft);color:var(--peri-deep);
+  display:grid;place-items:center;transition:.25s;flex:none;
+}
+.add:hover{background:var(--night);color:#fff;transform:rotate(90deg)}
+
+/* ---------- process ---------- */
+.process{background:var(--paper)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,30px);counter-reset:s}
+.step{padding-top:24px;border-top:2px solid var(--night)}
+.step:nth-child(n+2){border-top-color:var(--line)}
+.step .num{font-family:var(--mono);font-size:.78rem;color:var(--peri-deep);letter-spacing:.1em;display:block;margin-bottom:12px}
+.step h4{font-family:var(--display);font-size:1.28rem;font-weight:500;margin-bottom:8px;font-variation-settings:"SOFT" 45,"WONK" 1}
+.step p{font-size:.92rem;color:var(--muted);line-height:1.55}
+
+/* ---------- story ---------- */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,70px);align-items:center}
+.story-card{
+  position:relative;border-radius:var(--r-xl);padding:clamp(28px,4vw,44px);color:#fff;overflow:hidden;
+  background:linear-gradient(160deg,#3A2E5E,#1D1638);box-shadow:var(--shadow-l);
+}
+.story-card svg.deco{position:absolute;right:-30px;bottom:-30px;width:230px;opacity:.16}
+.story-list{display:grid;gap:14px;margin-top:26px}
+.story-list li{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;color:rgba(255,255,255,.8);list-style:none}
+.story-list svg{flex:none;margin-top:3px;color:var(--butter)}
+.story-list{padding:0}
+
+/* ---------- reviews ---------- */
+.reviews{background:var(--paper)}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(290px,1fr);gap:18px;overflow-x:auto;padding-bottom:16px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.rail::-webkit-scrollbar{height:6px}
+.rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+.review{
+  scroll-snap-align:start;background:var(--milk);border-radius:var(--r-lg);padding:26px 24px;
+  display:flex;flex-direction:column;gap:14px;border:1px solid var(--line-2);
+}
+.review p{font-size:.97rem;line-height:1.6}
+.review .who{margin-top:auto;font-size:.85rem;color:var(--muted)}
+.review .who b{display:block;color:var(--ink);font-size:.95rem}
+.stars-row{display:flex;gap:3px;color:var(--butter)}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px;margin-inline:auto}
+.q{border-bottom:1px solid var(--line)}
+.q summary{
+  list-style:none;cursor:pointer;padding:22px 46px 22px 0;position:relative;
+  font-family:var(--display);font-size:clamp(1.05rem,1.8vw,1.28rem);font-weight:500;font-variation-settings:"SOFT" 45,"WONK" 1;
+}
+.q summary::-webkit-details-marker{display:none}
+.q summary::after{
+  content:"";position:absolute;right:6px;top:50%;width:11px;height:11px;margin-top:-8px;
+  border-right:2px solid var(--peri-deep);border-bottom:2px solid var(--peri-deep);
+  transform:rotate(45deg);transition:transform .3s;
+}
+.q[open] summary::after{transform:rotate(225deg);margin-top:-3px}
+.q .a{padding:0 40px 24px 0;color:var(--muted);font-size:.96rem}
+
+/* ---------- custom order ---------- */
+.custom{background:linear-gradient(165deg,#2A2049,#161029);color:#fff}
+.custom-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.form{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-xl);padding:clamp(22px,3.4vw,34px);backdrop-filter:blur(8px)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.8rem;letter-spacing:.03em;color:rgba(255,255,255,.62);margin-bottom:6px;font-weight:600}
+.input{
+  width:100%;padding:13px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.06);color:#fff;transition:.22s;font-size:.95rem;
+}
+.input::placeholder{color:rgba(255,255,255,.34)}
+.input:focus{outline:none;border-color:var(--butter);background:rgba(255,255,255,.1)}
+textarea.input{min-height:112px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fineprint{font-size:.78rem;color:rgba(255,255,255,.45);margin-top:12px;line-height:1.5}
+
+/* ---------- footer ---------- */
+.ftr{background:var(--paper);padding:clamp(52px,6vw,74px) 0 30px;border-top:1px solid var(--line-2)}
+.ftr-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr;gap:clamp(24px,3vw,44px)}
+.ftr h5{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 16px;font-weight:500}
+.ftr ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.ftr a{font-size:.93rem;color:var(--muted);transition:color .2s}
+.ftr a:hover{color:var(--peri-deep)}
+.news{display:flex;gap:8px;margin-top:12px}
+.news input{flex:1;padding:12px 16px;border-radius:999px;border:1px solid var(--line);background:var(--milk);font-size:.9rem}
+.news input:focus{outline:none;border-color:var(--peri)}
+.news button{padding:12px 20px;border-radius:999px;background:var(--night);color:#fff;font-weight:600;font-size:.9rem}
+.ftr-bot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-top:44px;padding-top:22px;border-top:1px solid var(--line-2);font-size:.83rem;color:var(--muted)}
+
+/* ---------- overlays: cart, modal, menu ---------- */
+.scrim{position:fixed;inset:0;background:rgba(21,15,39,.5);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .35s;z-index:70}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(430px,100%);background:var(--milk);z-index:80;
+  transform:translateX(101%);transition:transform .42s cubic-bezier(.3,.9,.3,1);
+  display:flex;flex-direction:column;box-shadow:var(--shadow-l);
+}
+.drawer.on{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad) 16px;border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:1.4rem}
+.x{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;border:1px solid var(--line);transition:.2s}
+.x:hover{background:var(--night);color:#fff;border-color:var(--night);transform:rotate(90deg)}
+.drawer-body{flex:1;overflow-y:auto;padding:18px var(--pad)}
+.drawer-foot{padding:18px var(--pad) calc(18px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:#fff}
+.line{display:grid;grid-template-columns:78px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line-2);animation:fadeUp .35s backwards}
+.line-art{border-radius:14px;aspect-ratio:1;display:grid;place-items:center;overflow:hidden}
+.line-art svg{width:100%;height:100%}
+.line h4{font-family:var(--body);font-weight:700;font-size:.98rem;letter-spacing:0;line-height:1.25}
+.line .opt{font-size:.8rem;color:var(--muted);margin-top:2px}
+.line-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+.qty{display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;background:#fff}
+.qty button{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:1rem;color:var(--muted);transition:.18s}
+.qty button:hover{background:var(--night);color:#fff}
+.qty span{min-width:26px;text-align:center;font-family:var(--mono);font-size:.9rem}
+.rm{font-size:.8rem;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.rm:hover{color:#C2506B}
+.empty{text-align:center;padding:56px 20px;color:var(--muted)}
+.empty svg{margin:0 auto 18px;color:var(--peri)}
+.ship-bar{background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);padding:14px 16px;margin-bottom:16px;font-size:.85rem}
+.ship-track{height:6px;border-radius:99px;background:var(--peri-soft);margin-top:10px;overflow:hidden}
+.ship-fill{height:100%;background:linear-gradient(90deg,var(--peri),var(--butter));width:0;transition:width .5s cubic-bezier(.2,.8,.3,1)}
+.totals{display:grid;gap:8px;margin-bottom:14px;font-size:.92rem}
+.totals div{display:flex;justify-content:space-between}
+.totals .grand{font-size:1.16rem;font-weight:700;font-family:var(--mono)}
+
+/* modal */
+.modal{
+  position:fixed;inset:auto 0 0;z-index:80;background:var(--milk);border-radius:var(--r-xl) var(--r-xl) 0 0;
+  max-height:92vh;overflow-y:auto;transform:translateY(102%);transition:transform .45s cubic-bezier(.3,.9,.3,1);
+  box-shadow:var(--shadow-l);
+}
+.modal.on{transform:none}
+@media(min-width:860px){
+  .modal{inset:50% auto auto 50%;transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;
+    width:min(940px,92vw);border-radius:var(--r-xl);transition:opacity .3s,transform .38s cubic-bezier(.2,.8,.3,1)}
+  .modal.on{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
+}
+.modal-in{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:859px){.modal-in{grid-template-columns:1fr}}
+.modal-art{position:relative;display:grid;place-items:center;padding:26px;min-height:260px}
+.modal-art svg{width:min(300px,80%);height:auto;overflow:visible}
+.modal-info{padding:clamp(22px,3vw,34px);background:var(--milk)}
+.swatches{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
+.sw{width:34px;height:34px;border-radius:50%;border:2px solid transparent;box-shadow:0 0 0 1px var(--line) inset;transition:.2s;position:relative}
+.sw.on{border-color:var(--night);transform:scale(1.08)}
+.perso{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);padding:12px 14px;margin-top:18px;font-size:.88rem}
+.perso input[type=text]{flex:1;border:0;border-bottom:1.5px solid var(--line);background:none;padding:4px 2px;font-size:.9rem;min-width:0}
+.perso input[type=text]:focus{outline:none;border-color:var(--peri)}
+.modal-foot{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
+.modal .x{position:absolute;top:14px;right:14px;z-index:3}
+
+/* mobile menu */
+.menu{position:fixed;inset:0;background:var(--night);z-index:75;padding:96px var(--pad) 40px;display:none;flex-direction:column;gap:6px}
+.menu.on{display:flex}
+.menu a{font-family:var(--display);font-size:2rem;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);font-variation-settings:"SOFT" 50,"WONK" 1}
+
+/* toast */
+.toasts{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:90;display:grid;gap:10px;width:min(380px,calc(100% - 32px))}
+.toast{
+  background:var(--night);color:#fff;border-radius:var(--r-md);padding:14px 18px;font-size:.9rem;
+  display:flex;align-items:center;gap:11px;box-shadow:var(--shadow-l);animation:toastIn .4s cubic-bezier(.2,1.4,.4,1);
+}
+.toast svg{flex:none;color:var(--butter)}
+@keyframes toastIn{from{opacity:0;transform:translateY(18px) scale(.96)}}
+.toast.out{animation:toastOut .3s forwards}
+@keyframes toastOut{to{opacity:0;transform:translateY(10px)}}
+
+/* lullaby button */
+.lull{
+  position:fixed;right:18px;bottom:18px;z-index:55;display:flex;align-items:center;gap:9px;
+  padding:11px 17px;border-radius:999px;background:rgba(36,28,59,.9);color:#fff;font-size:.84rem;font-weight:600;
+  backdrop-filter:blur(8px);box-shadow:var(--shadow-m);transition:.25s;
+}
+.lull:hover{background:var(--peri-deep)}
+.lull.playing{background:var(--butter);color:var(--night)}
+.lull .bars{display:flex;gap:2px;align-items:flex-end;height:13px}
+.lull .bars i{width:2.5px;height:4px;background:currentColor;border-radius:2px}
+.lull.playing .bars i{animation:eq .9s ease-in-out infinite}
+.lull.playing .bars i:nth-child(2){animation-delay:.15s}
+.lull.playing .bars i:nth-child(3){animation-delay:.3s}
+@keyframes eq{0%,100%{height:4px}50%{height:13px}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.8,.3,1),transform .7s cubic-bezier(.2,.8,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero p.lede,.hero .eyebrow{margin-inline:auto}
+  .hero-cta,.hero-meta{justify-content:center}
+  .hero-art{order:-1;margin-bottom:8px}
+  .hero-art svg{width:min(330px,74%)}
+  .story{grid-template-columns:1fr}
+  .custom-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .ftr-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .nav{display:none}
+  .burger{display:grid}
+  .cart-btn span.lbl{display:none}
+  .cart-btn{padding:11px 14px}
+  .strip-in{grid-template-columns:1fr;gap:20px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
+  .card-body{padding:16px}
+  .card-body h3{font-size:1.06rem}
+  .form-row{grid-template-columns:1fr}
+  .ftr-grid{grid-template-columns:1fr}
+  .lull{bottom:14px;right:14px;padding:10px 14px}
+}
+@media(max-width:430px){
+  .steps{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr;gap:12px}
+  .card-art{aspect-ratio:4/4.6}
+  .price{font-size:.95rem}
+  .add{width:38px;height:38px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.08s !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a href="#top" class="brand" aria-label="Mjesečina, početna">
+      <svg width="30" height="30" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <ellipse cx="20" cy="27" rx="15" ry="4.2" stroke="currentColor" stroke-width="2" opacity=".55"/>
+        <path d="M22 4a10 10 0 1 0 0 20 13 13 0 0 1 0-20Z" fill="currentColor"/>
+        <circle cx="8" cy="33" r="2" fill="currentColor" opacity=".55"/>
+        <circle cx="32" cy="33" r="2" fill="currentColor" opacity=".55"/>
+      </svg>
+      Mjesečina
+    </a>
+    <nav class="nav">
+      <a href="#vrteske">Vrteške</a>
+      <a href="#kako">Kako nastaje</a>
+      <a href="#recenzije">Recenzije</a>
+      <a href="#pitanja">Pitanja</a>
+      <a href="#po-mjeri">Po mjeri</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="cart-btn" id="cartOpen" aria-label="Otvori korpu">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="lbl">Korpa</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Meni" aria-expanded="false">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <a href="#vrteske">Vrteške</a>
+  <a href="#kako">Kako nastaje</a>
+  <a href="#recenzije">Recenzije</a>
+  <a href="#pitanja">Pitanja</a>
+  <a href="#po-mjeri">Po mjeri</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<main id="top">
+<section class="hero">
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow on-dark">Ručna izrada · Bosna i Hercegovina</span>
+      <h1>Prvo što beba<br>ugleda je <span class="glow">nebo</span></h1>
+      <p class="lede">Vrteške koje se šiju za jednu bebu — vašu. Drveni obruč od bukve, muzički mehanizam i motivi u bojama koje sami birate.</p>
+      <div class="hero-cta">
+        <a href="#vrteske" class="btn btn-light">Pogledaj vrteške</a>
+        <a href="#po-mjeri" class="btn" style="color:#fff;border:1.5px solid rgba(255,255,255,.28)">Naruči po mjeri</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Muzički mehanizam uključen</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Stalak od bukve</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Besplatna dostava preko 120 €</span>
+      </div>
+    </div>
+    <div class="hero-art" id="heroArt"></div>
+  </div>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 90V44c180 34 340 34 520 6 200-32 380-56 560-30 130 19 250 40 360 34v36Z" fill="currentColor"/></svg>
+  </div>
+</section>
+
+<!-- ============ STRIP ============ -->
+<section class="strip">
+  <div class="wrap strip-in">
+    <div class="strip-item rv">
+      <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+      <div><h4>Uspavanka koja radi</h4><p>Navijajući mehanizam svira 3 minute i lagano okreće igračke. Baterije nisu potrebne.</p></div>
+    </div>
+    <div class="strip-item rv">
+      <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></div>
+      <div><h4>Sve se šije rukom</h4><p>Pamuk, muslin i punjenje bez štetnih boja. Svaki šav pregledan prije pakovanja.</p></div>
+    </div>
+    <div class="strip-item rv">
+      <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 21V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7Z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7Z"/></svg></div>
+      <div><h4>Stiže kao poklon</h4><p>Poklon kutija, vrpca i čestitka s vašom porukom — spremno za predaju.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="section" id="vrteske">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv">
+        <span class="eyebrow">Kolekcija 2026</span>
+        <h2>Odaberi priču<br>koja visi nad krevetcem</h2>
+      </div>
+      <div class="filters rv" id="filters" role="tablist" aria-label="Filter kolekcije"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section process" id="kako">
+  <div class="wrap">
+    <div class="rv" style="max-width:640px;margin-bottom:clamp(34px,4vw,54px)">
+      <span class="eyebrow">Od poruke do krevetca</span>
+      <h2>Četiri koraka</h2>
+      <p class="lede" style="margin-top:16px">Vrteške se ne prave unaprijed. Nakon narudžbe krećemo od nule, pa možete mijenjati boje i motive dok šivanje ne počne.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="num">01 · dan 1</span><h4>Javite se</h4><p>Pošaljite ideju, boju sobe ili sliku koja vam se sviđa. Odgovaramo u roku od 24 sata.</p></div>
+      <div class="step rv"><span class="num">02 · dan 2–4</span><h4>Skica i ponuda</h4><p>Šaljemo crtež rasporeda igračaka i uzorke tkanina. Mijenjamo dok ne bude vaše.</p></div>
+      <div class="step rv"><span class="num">03 · 2–5 sedmica</span><h4>Šivanje</h4><p>Svaka figura se kroji, šije i puni ručno, pa balansira na obruču da se vrti ravnomjerno.</p></div>
+      <div class="step rv"><span class="num">04 · 2–4 dana</span><h4>Dostava</h4><p>Pakujemo u poklon kutiju i šaljemo brzom poštom u BiH, Hrvatsku i Srbiju.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="section">
+  <div class="wrap story">
+    <div class="rv">
+      <span class="eyebrow">Zašto baš vrteška</span>
+      <h2>Igračka koja uči<br>bebu da gleda</h2>
+      <p class="lede" style="margin-top:18px">U prva tri mjeseca beba vidi jasno tek dvadesetak centimetara ispred sebe. Spori pokret, jak kontrast i mekan zvuk su tačno ono što joj tada treba — zato vrteška nije samo dekoracija iznad krevetca.</p>
+      <p class="lede" style="margin-top:14px">Kada beba preraste krevetac, obruč skinete sa stalka i objesite ga o strop dječije sobe. Ostaje kao ukras još godinama.</p>
+      <a href="#vrteske" class="btn btn-primary" style="margin-top:26px">Pogledaj kolekciju</a>
+    </div>
+    <div class="story-card rv">
+      <svg class="deco" viewBox="0 0 100 100" fill="none" aria-hidden="true"><circle cx="50" cy="50" r="46" stroke="#fff" stroke-width="1.5"/><circle cx="50" cy="50" r="32" stroke="#fff" stroke-width="1.5"/><circle cx="50" cy="50" r="18" stroke="#fff" stroke-width="1.5"/></svg>
+      <span class="eyebrow on-dark">Uz svaku vrtešku</span>
+      <h3 style="font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:6px">Šta dobijate u kutiji</h3>
+      <ul class="story-list">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Drveni obruč i stalak od bukve, bez lakova</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Navijajući muzički mehanizam s uspavankom</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 5 ručno šivenih figura, punjenih antialergijskim vlaknom</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Duži konop za kačenje na strop, kada beba poraste</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Uputstvo za montažu i pranje</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section reviews" id="recenzije">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv">
+        <span class="eyebrow">427 poslanih vrteški</span>
+        <h2>Šta kažu mame</h2>
+      </div>
+    </div>
+    <div class="rail" id="rail"></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="pitanja">
+  <div class="wrap">
+    <div class="rv" style="text-align:center;margin-bottom:clamp(26px,3.5vw,44px)">
+      <span class="eyebrow">Prije narudžbe</span>
+      <h2>Česta pitanja</h2>
+    </div>
+    <div class="faq rv" id="faq"></div>
+  </div>
+</section>
+
+<!-- ============ CUSTOM ORDER ============ -->
+<section class="section custom" id="po-mjeri">
+  <div class="wrap custom-grid">
+    <div>
+      <span class="eyebrow on-dark">Vrteška po mjeri</span>
+      <h2 style="color:#fff">Imate ideju<br>koje nema ovdje?</h2>
+      <p class="lede" style="color:rgba(255,255,255,.72);margin-top:18px">Opišite šta zamišljate — motiv, boje, ime bebe. Vraćamo se sa skicom i cijenom, bez obaveze. Prosječan rok izrade po mjeri je 4–6 sedmica.</p>
+      <div class="hero-meta" style="border-color:rgba(255,255,255,.14)">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg> zdravo@mjesecina.ba</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg> @mjesecina.vrteske</span>
+      </div>
+    </div>
+    <form class="form rv" id="customForm" novalidate>
+      <div class="form-row">
+        <div class="field"><label for="f-ime">Ime i prezime</label><input class="input" id="f-ime" name="ime" placeholder="Amina Hadžić" required></div>
+        <div class="field"><label for="f-tel">Telefon</label><input class="input" id="f-tel" name="tel" placeholder="+387 65 000 000" inputmode="tel"></div>
+      </div>
+      <div class="field"><label for="f-mail">Email</label><input class="input" id="f-mail" name="email" type="email" placeholder="amina@primjer.ba" required></div>
+      <div class="field"><label for="f-opis">Opišite vrtešku</label><textarea class="input" id="f-opis" name="opis" placeholder="Bijeli oblaci i mjesec, u prašnjavo roze i bež tonovima, s imenom Lejla…" required></textarea></div>
+      <button type="submit" class="btn btn-light btn-block" style="margin-top:6px">Pošalji upit</button>
+      <p class="fineprint">Odgovaramo u roku od 24 sata radnim danima. Podatke koristimo samo za ovaj upit.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div>
+        <a href="#top" class="brand" style="color:var(--ink)">
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <ellipse cx="20" cy="27" rx="15" ry="4.2" stroke="currentColor" stroke-width="2" opacity=".55"/>
+            <path d="M22 4a10 10 0 1 0 0 20 13 13 0 0 1 0-20Z" fill="currentColor"/>
+            <circle cx="8" cy="33" r="2" fill="currentColor" opacity=".55"/><circle cx="32" cy="33" r="2" fill="currentColor" opacity=".55"/>
+          </svg>
+          Mjesečina
+        </a>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:14px;max-width:34ch">Male radionice, velike prve godine. Šijemo iz Zvornika za cijeli region.</p>
+      </div>
+      <div>
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#vrteske">Sve vrteške</a></li>
+          <li><a href="#vrteske">Zvečke</a></li>
+          <li><a href="#po-mjeri">Po mjeri</a></li>
+          <li><a href="#kako">Kako nastaje</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Info</h5>
+        <ul>
+          <li><a href="#pitanja">Dostava</a></li>
+          <li><a href="#pitanja">Plaćanje</a></li>
+          <li><a href="#pitanja">Povrat</a></li>
+          <li><a href="#pitanja">Njega i pranje</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Newsletter</h5>
+        <p style="color:var(--muted);font-size:.92rem">Nove kolekcije i mali popusti, jednom mjesečno.</p>
+        <form class="news" id="newsForm">
+          <input type="email" placeholder="Email adresa" aria-label="Email adresa" required>
+          <button type="submit">Prijavi se</button>
+        </form>
+      </div>
+    </div>
+    <div class="ftr-bot">
+      <span>© 2026 Mjesečina — sva prava zadržana</span>
+      <span class="mono" style="font-size:.78rem">Demo front-end · korpa radi lokalno</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ OVERLAYS ============ -->
+<div class="scrim" id="scrim"></div>
+
+<aside class="drawer" id="cart" aria-label="Korpa" aria-hidden="true">
+  <div class="drawer-head">
+    <h3>Vaša korpa</h3>
+    <button class="x" id="cartClose" aria-label="Zatvori korpu"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot" id="cartFoot" hidden>
+    <div class="totals">
+      <div><span>Međuzbir</span><span class="mono" id="sumSub">0,00 €</span></div>
+      <div><span>Dostava</span><span class="mono" id="sumShip">—</span></div>
+      <div class="grand"><span>Ukupno</span><span id="sumTotal">0,00 €</span></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="checkout">Nastavi na plaćanje</button>
+  </div>
+</aside>
+
+<div class="modal" id="pmodal" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="x" id="pmClose" aria-label="Zatvori"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <div class="modal-in" id="pmIn"></div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<button class="lull" id="lull" aria-pressed="false">
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  <span id="lullLabel">Pusti uspavanku</span>
+</button>
+
+<script>
+(() => {
+"use strict";
+
+/* =========================================================
+   1. PODACI  —  ovdje kasnije ide fetch sa backenda
+   ========================================================= */
+const SHIP_COST = 6.9;
+const FREE_FROM = 120;
+const NAME_FEE  = 8;
+
+const COLORS = [
+  {n:"Bež",             c:"#E9DBC8"},
+  {n:"Prašnjavo roze",  c:"#EFC2CB"},
+  {n:"Magla siva",      c:"#D3D1DE"},
+  {n:"Šalvija",         c:"#B7D2C1"},
+  {n:"Nebo plava",      c:"#BDCDE8"}
+];
+
+const PRODUCTS = [
+  { id:"oblak", name:"Vrteška Oblak", cat:"nebo", price:116, badge:"Najprodavanije",
+    shapes:["cloud","moon","star","cloud","drop"],
+    pal:["#FFFFFF","#DFDAF7","#F7C873","#C9C3EE"], bg:["#ECE9FB","#FBF1E4"],
+    desc:"Minimalistička vrteška koja pristaje uz svaku sobu. Pet mekanih oblaka i mjesec u tonovima koje birate — dovoljno kontrasta da beba prati pokret, dovoljno tiho da soba ostane mirna." },
+  { id:"medo-mjesec", name:"Medo na mjesecu", cat:"zivotinje", price:124,
+    shapes:["moon","bear","cloud","star","bead"],
+    pal:["#F7C873","#E3D3C2","#FFFFFF","#DFDAF7"], bg:["#FBF0DE","#EEEAF9"],
+    desc:"Medo koji spava na mjesecu, okružen oblacima i zvijezdom. Najtraženiji motiv za prve fotografije u krevetcu." },
+  { id:"avion", name:"Medo, avion i balon", cat:"nebo", price:132,
+    shapes:["plane","balloon","mountain","cloud","star"],
+    pal:["#BDCDE8","#EFC2CB","#F7C873","#FFFFFF"], bg:["#E6EDF9","#FBF0E5"],
+    desc:"Za male putnike: avion, topli balon i planina koja viri iz oblaka. Vedra kombinacija za sobe u plavim i sivim tonovima." },
+  { id:"ovcice", name:"Vrteška s ovčicama", cat:"zivotinje", price:109, badge:"Klasik",
+    shapes:["sheep","cloud","sheep","moon","star"],
+    pal:["#FFFFFF","#E9DBC8","#DFDAF7","#F7C873"], bg:["#F2F0FA","#F8F2EA"],
+    desc:"Ovčice koje se broje prije spavanja. Mekana bijela kovrčava tkanina i drveni obruč — naš prvi model, i dalje najtraženiji." },
+  { id:"labudica", name:"Labudica", cat:"zivotinje", price:128,
+    shapes:["swan","cloud","heart","leaf","bead"],
+    pal:["#FFFFFF","#EFC2CB","#B7D2C1","#E9DBC8"], bg:["#FAECEF","#F1F4F0"],
+    desc:"Nježan balet labudova, srca i listova. Kombinacija koju najčešće biraju za djevojčice, ali radi je i u sivo-bijeloj varijanti." },
+  { id:"safari", name:"Safari", cat:"zivotinje", price:134, badge:"Novo",
+    shapes:["elephant","fox","leaf","mountain","bead"],
+    pal:["#E9DBC8","#E7A87C","#B7D2C1","#D3D1DE"], bg:["#F7EFE4","#EFF3EC"],
+    desc:"Slon, lisica i lišće u toplim zemljanim tonovima. Pet figura s najviše detalja u kolekciji — zato i najduži rok izrade." },
+  { id:"slonic", name:"Slonić na oblaku", cat:"zivotinje", price:121,
+    shapes:["elephant","cloud","drop","star","bead"],
+    pal:["#D3D1DE","#FFFFFF","#BDCDE8","#F7C873"], bg:["#EDEDF6","#E9EFFA"],
+    desc:"Slonić koji sjedi na oblaku, s kapima kiše i zvijezdom. Smiren, gotovo monokromatski set za moderne sobe." },
+  { id:"suma", name:"Šumska priča", cat:"suma", price:129,
+    shapes:["fox","bunny","leaf","mountain","flower"],
+    pal:["#E7A87C","#E9DBC8","#B7D2C1","#FFFFFF"], bg:["#F6EEE6","#EDF3ED"],
+    desc:"Lisica, zeko i šumsko lišće. Motiv koji lijepo stari — kada beba preraste krevetac, obruč ide na strop kao dekor." },
+  { id:"more", name:"Morska priča", cat:"more", price:126,
+    shapes:["whale","fish","shell","drop","cloud"],
+    pal:["#BDCDE8","#FFFFFF","#EFC2CB","#B7D2C1"], bg:["#E6EEF9","#EFF5F3"],
+    desc:"Kit, ribica i školjka u tonovima mora. Bijele i pješčane nijanse dobro se slažu s drvenim namještajem." },
+  { id:"duga", name:"Duga nad oblacima", cat:"nebo", price:118,
+    shapes:["rainbow","cloud","star","drop","bead"],
+    pal:["#EFC2CB","#F7C873","#B7D2C1","#FFFFFF"], bg:["#FAEEF0","#F3F6EE"],
+    desc:"Najviše boje u kolekciji. Duga u pastelnim slojevima, oblaci i kapi — za sobe koje smiju biti vesele." },
+  { id:"zvecke", name:"Set mekanih zvečki", cat:"zvecke", price:24,
+    shapes:["bunny","bead","fox"], row:true,
+    pal:["#E9DBC8","#EFC2CB","#B7D2C1","#FFFFFF"], bg:["#F7F1E9","#F3EFF9"],
+    desc:"Tri mekane zvečke od kovrčave tkanine, taman za bebinu šaku. Peru se u mašini na 30°C. Odličan dodatak uz vrtešku ili poklon za rođenje." }
+];
+
+const CATS = [
+  {id:"sve",       n:"Sve"},
+  {id:"nebo",      n:"Nebo i oblaci"},
+  {id:"zivotinje", n:"Životinje"},
+  {id:"suma",      n:"Šuma"},
+  {id:"more",      n:"More"},
+  {id:"zvecke",    n:"Zvečke"}
+];
+
+const REVIEWS = [
+  {t:"Vrteška je stigla jutros i ljepša je uživo nego na slikama. Sve je tako precizno ušiveno, ničega previše. Muž je stalak sastavio za pet minuta.", n:"Amina H.", g:"Tuzla"},
+  {t:"Naručila sam u sedmom mjesecu trudnoće i stigla je tačno na vrijeme. Lejla se smiri čim je navijem — jedina stvar koja radi u 3 ujutro.", n:"Marija P.", g:"Banja Luka"},
+  {t:"Tražila sam boje po uzorku tapeta i poslali su mi tri kombinacije da biram. Strpljenje na nivou. Pakovanje je za pet zvjezdica.", n:"Ivana K.", g:"Zagreb"},
+  {t:"Kupila sam je kao poklon za prijateljicu i sad naručujem drugu za sebe. Kutija, vrpca i čestitka — nisam morala ništa dodavati.", n:"Sanja M.", g:"Novi Sad"},
+  {t:"Nakon godinu dana skinuli smo obruč sa stalka i objesili ga iznad kutka za igru. I dalje izgleda kao nov, iako je preživio sve.", n:"Dragana V.", g:"Sarajevo"}
+];
+
+const FAQ = [
+  ["Koliko traje izrada?","Vrteške se ne prave unaprijed nego nakon narudžbe, pa je uobičajen rok 2–5 sedmica, ovisno o gužvi. Za narudžbe po mjeri računajte 4–6 sedmica. Tačan rok potvrđujemo mailom istog dana kada narudžba stigne."],
+  ["Mogu li mijenjati boje i motive?","Možete. Svaka vrteška se radi u bojama koje odaberete, a figure se mogu zamijeniti drugima iz kolekcije. Ako želite motiv kojeg nema, pošaljite opis kroz formu Po mjeri i vraćamo se sa skicom."],
+  ["Od čega je napravljena?","Stalak i obruč su od bukovog drveta, bez lakova i boja. Figure su od pamuka i muslina, punjene antialergijskim vlaknom. Muzički mehanizam je navijajući, bez baterija."],
+  ["Kako se pere?","Figure se peru ručno u mlakoj vodi s blagim deterdžentom i suše se ravno položene. Zvečke smiju u mašinu na 30°C, u vrećici za rublje. Drveni dijelovi se samo prebrišu vlažnom krpom."],
+  ["Koliko košta dostava?","Dostava po BiH je 6,90 €, a besplatna za narudžbe preko 120 €. Za Hrvatsku i Srbiju cijena se računa na naplati. Plaćanje je pouzećem ili uplatnicom."],
+  ["Je li vrteška igračka?","Nije — vrteška je dekorativne namjene i postavlja se izvan bebinog dohvata. Nadzirite bebu dok je vrteška uključena i uklonite je kada beba počne sjediti ili se pridizati."]
+];
+
+/* =========================================================
+   2. SVG "FOTOGRAFIJE" PROIZVODA (generisane, bez vanjskih fajlova)
+      Zamjena za prave fotke: obrišite art() i stavite <img src="...">
+   ========================================================= */
+const DK = "#3B3350";
+const SHAPES = {
+  cloud:(a)=>`<g fill="${a}"><circle cx="-13" cy="1" r="10"/><circle cx="1" cy="-6" r="14"/><circle cx="15" cy="1" r="10"/><rect x="-23" y="-4" width="38" height="14" rx="7"/></g>`,
+  moon:(a)=>`<path d="M2,-20 A20,20 0 1,0 2,20 A26,26 0 0,1 2,-20 Z" fill="${a}"/>`,
+  star:(a)=>`<path d="M0,-15 L4.3,-4.8 L15.3,-4.8 L6.4,2.1 L9.9,12.6 L0,6.3 L-9.9,12.6 L-6.4,2.1 L-15.3,-4.8 L-4.3,-4.8 Z" fill="${a}"/>`,
+  heart:(a)=>`<path d="M0,13 C-15,3 -18,-6 -12,-11 C-7,-15.5 -1,-12 0,-7 C1,-12 7,-15.5 12,-11 C18,-6 15,3 0,13 Z" fill="${a}"/>`,
+  drop:(a)=>`<path d="M0,-16 C8,-6 14,0 14,6 A14,14 0 0,1 -14,6 C-14,0 -8,-6 0,-16 Z" fill="${a}"/>`,
+  bead:(a,b)=>`<g><circle r="10" fill="${a}"/><circle r="4.5" fill="${b}" opacity=".7"/></g>`,
+  rainbow:(a,b,c)=>`<g fill="none" stroke-linecap="round"><path d="M-21,11 A21,21 0 0,1 21,11" stroke="${a}" stroke-width="7"/><path d="M-12,11 A12,12 0 0,1 12,11" stroke="${b}" stroke-width="7"/><path d="M-3.5,11 A3.5,3.5 0 0,1 3.5,11" stroke="${c}" stroke-width="6"/></g>`,
+  bear:(a,b)=>`<g><circle cx="-11" cy="-11" r="6.5" fill="${a}"/><circle cx="11" cy="-11" r="6.5" fill="${a}"/><circle cx="0" cy="1" r="15" fill="${a}"/><ellipse cx="0" cy="6" rx="7.5" ry="5.5" fill="${b}"/><circle cx="-6" cy="-2" r="1.7" fill="${DK}"/><circle cx="6" cy="-2" r="1.7" fill="${DK}"/><circle cx="0" cy="3" r="2.1" fill="${DK}"/></g>`,
+  sheep:(a,b)=>`<g><circle cx="-11" cy="0" r="9" fill="${a}"/><circle cx="0" cy="-7" r="10" fill="${a}"/><circle cx="10" cy="1" r="9" fill="${a}"/><circle cx="-1" cy="6" r="9.5" fill="${a}"/><circle cx="13" cy="-9" r="7" fill="${b}"/><circle cx="11.5" cy="-10" r="1.6" fill="${DK}"/></g>`,
+  elephant:(a,b)=>`<g><circle cx="-1" cy="0" r="15" fill="${a}"/><path d="M11,4 C17,7 17,15 12,16.5" fill="none" stroke="${a}" stroke-width="5.5" stroke-linecap="round"/><ellipse cx="-8" cy="-2" rx="7" ry="8.5" fill="${b}"/><circle cx="4" cy="-3" r="1.8" fill="${DK}"/></g>`,
+  swan:(a,b)=>`<g><ellipse cx="-3" cy="8" rx="15" ry="9" fill="${a}"/><path d="M6,10 C6,-2 8,-12 14,-13.5" fill="none" stroke="${a}" stroke-width="5.5" stroke-linecap="round"/><circle cx="14.5" cy="-14" r="4.6" fill="${a}"/><path d="M18,-14.5 l6,2 -6,2z" fill="${b}"/><circle cx="15" cy="-15" r="1.4" fill="${DK}"/></g>`,
+  whale:(a,b)=>`<g><ellipse cx="-2" cy="3" rx="16" ry="10" fill="${a}"/><path d="M12,3 l10,-8 0,16z" fill="${a}"/><path d="M-8,-7 C-8,-14 -2,-14 -2,-8" fill="none" stroke="${b}" stroke-width="3" stroke-linecap="round"/><circle cx="-9" cy="2" r="1.8" fill="${DK}"/></g>`,
+  fish:(a,b)=>`<g><ellipse cx="-1" cy="0" rx="14" ry="9" fill="${a}"/><path d="M11,0 l10,-7 0,14z" fill="${b}"/><circle cx="-7" cy="-2" r="1.7" fill="${DK}"/></g>`,
+  leaf:(a,b)=>`<g><path d="M0,-16 C13,-8 13,8 0,17 C-13,8 -13,-8 0,-16 Z" fill="${a}"/><path d="M0,-11 L0,14" stroke="${b}" stroke-width="1.6"/></g>`,
+  flower:(a,b)=>`<g fill="${a}"><circle cx="0" cy="-11" r="6.5"/><circle cx="10.5" cy="-3.5" r="6.5"/><circle cx="6.5" cy="9" r="6.5"/><circle cx="-6.5" cy="9" r="6.5"/><circle cx="-10.5" cy="-3.5" r="6.5"/><circle r="5" fill="${b}"/></g>`,
+  balloon:(a,b)=>`<g><circle cx="0" cy="-5" r="12.5" fill="${a}"/><path d="M-5,6 L5,6 L3.5,13.5 L-3.5,13.5 Z" fill="${b}"/><path d="M-4.4,7 L-3,13 M4.4,7 L3,13" stroke="${b}" stroke-width="1.3"/></g>`,
+  plane:(a,b)=>`<g><path d="M-17,3 L14,-4 L17,0 L14,5 L-17,7 Z" fill="${a}"/><path d="M-2,-2 L-9,-13 L-3,-13 L5,-4 Z" fill="${b}"/></g>`,
+  mountain:(a,b)=>`<g><path d="M-18,13 L0,-15 L18,13 Z" fill="${a}"/><path d="M-6.5,-2 L0,-15 L6.5,-2 C3,-4.5 -3,-4.5 -6.5,-2 Z" fill="${b}"/></g>`,
+  shell:(a,b)=>`<g><path d="M-15,11 A15,15 0 0,1 15,11 Z" fill="${a}"/><path d="M0,-4 L0,11 M-7,-1.5 L-9.5,10 M7,-1.5 L9.5,10" stroke="${b}" stroke-width="1.4"/></g>`,
+  bunny:(a,b)=>`<g><ellipse cx="-6" cy="-13" rx="4.2" ry="9.5" fill="${a}"/><ellipse cx="6" cy="-13" rx="4.2" ry="9.5" fill="${a}"/><circle cx="0" cy="2" r="13" fill="${a}"/><circle cx="-4.8" cy="0" r="1.7" fill="${DK}"/><circle cx="4.8" cy="0" r="1.7" fill="${DK}"/><path d="M0,4.5 l0,2.5" stroke="${b}" stroke-width="2.2" stroke-linecap="round"/></g>`,
+  fox:(a,b)=>`<g><path d="M-14,-7 L-9,-17 L-2.5,-10 Z" fill="${a}"/><path d="M14,-7 L9,-17 L2.5,-10 Z" fill="${a}"/><path d="M-14,-8 C-6,-14 6,-14 14,-8 C14,4 7,14 0,14 C-7,14 -14,4 -14,-8 Z" fill="${a}"/><path d="M-9,3 C-5,11 5,11 9,3 C7,13 -7,13 -9,3 Z" fill="${b}"/><circle cx="-5" cy="-2" r="1.8" fill="${DK}"/><circle cx="5" cy="-2" r="1.8" fill="${DK}"/></g>`
+};
+
+let uid = 0;
+function art(p, opt){
+  opt = opt || {};
+  const w = opt.w || 340, h = opt.h || 420;
+  const pal = opt.color ? [opt.color].concat(p.pal.slice(1)) : p.pal;
+  const id = "w" + (++uid);
+  const cx = w/2, top = 12, hoopY = opt.hoopY || 148, rx = opt.rx || (w*0.35), ry = rx*0.14;
+  const n = p.shapes.length;
+  let out = "";
+
+  // kuka + konop
+  out += `<path d="M${cx-12},${top} h24" stroke="#8A7F6B" stroke-width="4" stroke-linecap="round"/>`;
+  out += `<path d="M${cx},${top} V${hoopY-ry}" stroke="rgba(80,70,110,.35)" stroke-width="1.6"/>`;
+
+  // drveni obruč
+  out += `<ellipse cx="${cx}" cy="${hoopY}" rx="${rx}" ry="${ry}" fill="none" stroke="url(#${id}wood)" stroke-width="${opt.thick||9}"/>`;
+
+  // figure
+  const span = p.row ? 0.62 : 0.86;
+  for (let i=0;i<n;i++){
+    const u = n===1 ? 0 : (-span + (2*span*i)/(n-1));
+    const x = cx + rx*u;
+    const y0 = hoopY + ry*Math.sqrt(Math.max(0,1-u*u));
+    const sc  = opt.scale || (rx/130);
+    const len = (p.row ? rx*0.40 : rx*0.52 + rx*0.28*Math.abs(Math.sin(i*1.9+1)));
+    const a = pal[i % pal.length];
+    const b = pal[(i+2) % pal.length];
+    const c = pal[(i+1) % pal.length];
+    const fn = SHAPES[p.shapes[i]] || SHAPES.bead;
+    out += `<g class="hang" style="transform-origin:${x}px ${y0}px;animation-duration:${(4.4+i*0.45).toFixed(2)}s;animation-delay:-${(i*0.8).toFixed(2)}s">
+      <path d="M${x},${y0} V${y0+len}" stroke="rgba(80,70,110,.34)" stroke-width="1.4"/>
+      <circle cx="${x}" cy="${y0+2}" r="${(2.6*sc).toFixed(2)}" fill="#8A7F6B"/>
+      <g transform="translate(${x},${y0+len+22*sc}) scale(${sc.toFixed(3)})">${fn(a,b,c)}</g>
+    </g>`;
+  }
+
+  return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${p.name}">
+    <defs>
+      <linearGradient id="${id}wood" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#B99C74"/><stop offset=".5" stop-color="#E2C79E"/><stop offset="1" stop-color="#A98A64"/>
+      </linearGradient>
+    </defs>
+    ${opt.glow ? `<circle cx="${cx}" cy="${hoopY+55}" r="${rx*0.85}" fill="rgba(247,200,115,.10)"/>` : ""}
+    <g class="hoop" style="transform-origin:${cx}px ${top}px">${out}</g>
+  </svg>`;
+}
+
+/* =========================================================
+   3. POMOĆNE
+   ========================================================= */
+const $  = (s,r)=> (r||document).querySelector(s);
+const $$ = (s,r)=> Array.from((r||document).querySelectorAll(s));
+const fmt = n => n.toFixed(2).replace(".",",") + " €";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function toast(msg){
+  const t = document.createElement("div");
+  t.className = "toast";
+  t.innerHTML = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>${esc(msg)}</span>`;
+  $("#toasts").appendChild(t);
+  setTimeout(()=>{ t.classList.add("out"); setTimeout(()=>t.remove(),300); }, 2900);
+}
+
+/* =========================================================
+   4. RENDER SEKCIJA
+   ========================================================= */
+// zvjezdice u heroju
+(function(){
+  const box = $("#stars");
+  let s = "";
+  for (let i=0;i<46;i++){
+    const size = Math.random()*2.2 + 1;
+    s += `<i class="star-dot" style="left:${(Math.random()*100).toFixed(2)}%;top:${(Math.random()*88).toFixed(2)}%;width:${size.toFixed(1)}px;height:${size.toFixed(1)}px;animation-delay:-${(Math.random()*4).toFixed(1)}s"></i>`;
+  }
+  box.innerHTML = s;
+})();
+
+$("#heroArt").innerHTML = art(
+  {name:"Vrteška iznad krevetca", shapes:["star","cloud","moon","bear","cloud","drop"],
+   pal:["#F7C873","#FFFFFF","#E5E2F9","#EFC2CB"]},
+  {w:440, h:395, hoopY:145, rx:170, thick:11, glow:true}
+);
+
+// filteri
+let filter = "sve";
+$("#filters").innerHTML = CATS.map(c =>
+  `<button class="chip${c.id===filter?" on":""}" data-cat="${c.id}" role="tab">${c.n}</button>`).join("");
+
+function renderGrid(){
+  const list = PRODUCTS.filter(p => filter==="sve" || p.cat===filter);
+  $("#grid").innerHTML = list.map((p,i) => `
+    <article class="card" style="animation-delay:${i*45}ms">
+      <div class="card-art" data-open="${p.id}" style="background:linear-gradient(160deg,${p.bg[0]},${p.bg[1]})" role="button" tabindex="0" aria-label="Detalji: ${esc(p.name)}">
+        ${p.badge ? `<span class="badge">${esc(p.badge)}</span>` : ""}
+        ${art(p, {w:320, h:300, hoopY:126, rx:112})}
+      </div>
+      <div class="card-body">
+        <span class="card-cat">${(CATS.find(c=>c.id===p.cat)||{}).n||""}</span>
+        <h3>${esc(p.name)}</h3>
+        <div class="card-foot">
+          <span class="price">${fmt(p.price)}</span>
+          <button class="add" data-add="${p.id}" aria-label="Dodaj ${esc(p.name)} u korpu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+      </div>
+    </article>`).join("");
+}
+renderGrid();
+
+$("#filters").addEventListener("click", e => {
+  const b = e.target.closest("[data-cat]"); if(!b) return;
+  filter = b.dataset.cat;
+  $$("#filters .chip").forEach(c => c.classList.toggle("on", c.dataset.cat===filter));
+  renderGrid();
+});
+
+// recenzije
+$("#rail").innerHTML = REVIEWS.map(r => `
+  <div class="review">
+    <div class="stars-row">${'<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.5l7-.9Z"/></svg>'.repeat(5)}</div>
+    <p>${esc(r.t)}</p>
+    <div class="who"><b>${esc(r.n)}</b>${esc(r.g)}</div>
+  </div>`).join("");
+
+// faq
+$("#faq").innerHTML = FAQ.map(([q,a],i) => `
+  <details class="q"${i===0?" open":""}><summary>${esc(q)}</summary><div class="a">${esc(a)}</div></details>`).join("");
+
+/* =========================================================
+   5. KORPA
+   ========================================================= */
+let cart = [];  // {key, id, qty, color, babyName}
+
+function lineTotal(it){
+  const p = PRODUCTS.find(x => x.id===it.id);
+  return (p.price + (it.babyName ? NAME_FEE : 0)) * it.qty;
+}
+const cartQty = () => cart.reduce((s,i)=>s+i.qty,0);
+const subTotal = () => cart.reduce((s,i)=>s+lineTotal(i),0);
+
+function addToCart(id, {color=null, babyName="", qty=1}={}){
+  const key = id + "|" + (color||"") + "|" + babyName.trim().toLowerCase();
+  const found = cart.find(i => i.key===key);
+  if (found) found.qty += qty;
+  else cart.push({key, id, qty, color, babyName:babyName.trim()});
+  renderCart();
+  const c = $("#cartCount");
+  c.classList.add("pop"); setTimeout(()=>c.classList.remove("pop"),300);
+  toast(PRODUCTS.find(p=>p.id===id).name + " je u korpi");
+}
+
+function renderCart(){
+  $("#cartCount").textContent = cartQty();
+  const body = $("#cartBody"), foot = $("#cartFoot");
+
+  if (!cart.length){
+    foot.hidden = true;
+    body.innerHTML = `<div class="empty">
+      <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <p style="font-family:var(--display);font-size:1.3rem;color:var(--ink);margin-bottom:6px">Korpa je prazna</p>
+      <p style="font-size:.93rem">Odaberite vrtešku iz kolekcije — boje i ime bebe birate u sljedećem koraku.</p>
+      <button class="btn btn-primary" style="margin-top:22px" data-close-cart>Pogledaj kolekciju</button>
+    </div>`;
+    return;
+  }
+
+  const sub = subTotal();
+  const left = Math.max(0, FREE_FROM - sub);
+  const pct = Math.min(100, (sub/FREE_FROM)*100);
+
+  body.innerHTML = `
+    <div class="ship-bar">
+      ${left>0 ? `Još <b class="mono">${fmt(left)}</b> do besplatne dostave` : `<b>Dostava je besplatna</b> 🎉`}
+      <div class="ship-track"><div class="ship-fill" style="width:${pct}%"></div></div>
+    </div>` +
+    cart.map((it,i) => {
+      const p = PRODUCTS.find(x => x.id===it.id);
+      return `<div class="line" style="animation-delay:${i*40}ms">
+        <div class="line-art" style="background:linear-gradient(160deg,${p.bg[0]},${p.bg[1]})">${art(p,{w:150,h:135,hoopY:50,rx:52,thick:6,color:it.color})}</div>
+        <div>
+          <h4>${esc(p.name)}</h4>
+          <div class="opt">${it.color ? esc((COLORS.find(c=>c.c===it.color)||{}).n || "boja po izboru") : "Standardne boje"}${it.babyName ? " · ime: " + esc(it.babyName) : ""}</div>
+          <div class="line-row">
+            <div class="qty">
+              <button data-dec="${it.key}" aria-label="Manje">−</button>
+              <span>${it.qty}</span>
+              <button data-inc="${it.key}" aria-label="Više">+</button>
+            </div>
+            <span class="price">${fmt(lineTotal(it))}</span>
+          </div>
+          <button class="rm" data-rm="${it.key}" style="margin-top:8px">Ukloni</button>
+        </div>
+      </div>`;
+    }).join("");
+
+  const ship = sub >= FREE_FROM ? 0 : SHIP_COST;
+  foot.hidden = false;
+  $("#sumSub").textContent = fmt(sub);
+  $("#sumShip").textContent = ship===0 ? "besplatno" : fmt(ship);
+  $("#sumTotal").textContent = fmt(sub + ship);
+}
+renderCart();
+
+$("#cartBody").addEventListener("click", e => {
+  const inc = e.target.closest("[data-inc]"), dec = e.target.closest("[data-dec]"), rm = e.target.closest("[data-rm]");
+  if (e.target.closest("[data-close-cart]")){ closeAll(); $("#vrteske").scrollIntoView({behavior:"smooth"}); return; }
+  if (inc){ cart.find(i=>i.key===inc.dataset.inc).qty++; renderCart(); }
+  if (dec){ const it = cart.find(i=>i.key===dec.dataset.dec); it.qty--; if(it.qty<1) cart = cart.filter(i=>i!==it); renderCart(); }
+  if (rm){ cart = cart.filter(i=>i.key!==rm.dataset.rm); renderCart(); toast("Uklonjeno iz korpe"); }
+});
+
+/* =========================================================
+   6. OVERLAYI
+   ========================================================= */
+const scrim = $("#scrim"), cartEl = $("#cart"), modal = $("#pmodal"), menu = $("#menu");
+let lastFocus = null;
+
+function openCart(){ lastFocus = document.activeElement; cartEl.classList.add("on"); cartEl.setAttribute("aria-hidden","false"); scrim.classList.add("on"); document.body.classList.add("locked"); $("#cartClose").focus(); }
+function openModal(html){ lastFocus = document.activeElement; $("#pmIn").innerHTML = html; modal.classList.add("on"); modal.setAttribute("aria-hidden","false"); scrim.classList.add("on"); document.body.classList.add("locked"); $("#pmClose").focus(); }
+function closeAll(){
+  cartEl.classList.remove("on"); cartEl.setAttribute("aria-hidden","true");
+  modal.classList.remove("on"); modal.setAttribute("aria-hidden","true");
+  menu.classList.remove("on"); menu.setAttribute("aria-hidden","true"); $("#burger").setAttribute("aria-expanded","false");
+  scrim.classList.remove("on"); document.body.classList.remove("locked");
+  if (lastFocus) { try { lastFocus.focus(); } catch(e){} }
+}
+$("#cartOpen").onclick = openCart;
+$("#cartClose").onclick = closeAll;
+$("#pmClose").onclick = closeAll;
+scrim.onclick = closeAll;
+document.addEventListener("keydown", e => { if (e.key==="Escape") closeAll(); });
+$("#burger").onclick = () => {
+  const on = menu.classList.toggle("on");
+  menu.setAttribute("aria-hidden", String(!on));
+  $("#burger").setAttribute("aria-expanded", String(on));
+  document.body.classList.toggle("locked", on);
+};
+$$("#menu a").forEach(a => a.onclick = closeAll);
+
+/* ---- detalji proizvoda ---- */
+let pmState = {id:null, color:null, qty:1, name:""};
+
+function productHTML(p){
+  const price = p.price + (pmState.name ? NAME_FEE : 0);
+  return `
+    <div class="modal-art" style="background:linear-gradient(160deg,${p.bg[0]},${p.bg[1]})" id="pmArt">
+      ${art(p,{w:320,h:300,hoopY:126,rx:110,color:pmState.color})}
+    </div>
+    <div class="modal-info">
+      <span class="card-cat">${(CATS.find(c=>c.id===p.cat)||{}).n||""}</span>
+      <h3 style="font-size:clamp(1.6rem,3vw,2.1rem);margin:6px 0 10px">${esc(p.name)}</h3>
+      <p style="color:var(--muted);font-size:.95rem">${esc(p.desc)}</p>
+
+      <div style="margin-top:22px">
+        <span class="card-cat">Boja tkanine</span>
+        <div class="swatches" id="pmSw">
+          <button class="sw${pmState.color===null?" on":""}" data-c="" title="Standardne boje" aria-label="Standardne boje" style="background:linear-gradient(135deg,${p.pal[0]},${p.pal[1]},${p.pal[2]})"></button>
+          ${COLORS.map(c => `<button class="sw${pmState.color===c.c?" on":""}" data-c="${c.c}" title="${c.n}" aria-label="${c.n}" style="background:${c.c}"></button>`).join("")}
+        </div>
+      </div>
+
+      <label class="perso">
+        <input type="checkbox" id="pmNameOn" ${pmState.name?"checked":""}>
+        <span>Ušij ime bebe</span>
+        <input type="text" id="pmName" maxlength="14" placeholder="npr. Lejla" value="${esc(pmState.name)}">
+        <span class="mono" style="color:var(--muted)">+${fmt(NAME_FEE)}</span>
+      </label>
+
+      <div class="modal-foot">
+        <div class="qty">
+          <button id="pmDec" aria-label="Manje">−</button><span id="pmQty">${pmState.qty}</span><button id="pmInc" aria-label="Više">+</button>
+        </div>
+        <span class="price" id="pmPrice" style="font-size:1.3rem">${fmt(price*pmState.qty)}</span>
+        <button class="btn btn-primary" id="pmAdd" style="flex:1;min-width:180px">Dodaj u korpu</button>
+      </div>
+      <p style="font-size:.82rem;color:var(--muted);margin-top:14px">Izrada 2–5 sedmica · besplatna dostava preko ${fmt(FREE_FROM)} · vrteška je dekorativne namjene</p>
+    </div>`;
+}
+
+function openProduct(id){
+  const p = PRODUCTS.find(x => x.id===id); if(!p) return;
+  pmState = {id, color:null, qty:1, name:""};
+  openModal(productHTML(p));
+  bindProduct(p);
+}
+
+function bindProduct(p){
+  const refreshPrice = () => {
+    $("#pmPrice").textContent = fmt((p.price + (pmState.name?NAME_FEE:0)) * pmState.qty);
+    $("#pmQty").textContent = pmState.qty;
+  };
+  $("#pmSw").addEventListener("click", e => {
+    const b = e.target.closest(".sw"); if(!b) return;
+    pmState.color = b.dataset.c || null;
+    $$("#pmSw .sw").forEach(s => s.classList.toggle("on", s===b));
+    $("#pmArt").innerHTML = art(p,{w:320,h:300,hoopY:126,rx:110,color:pmState.color});
+  });
+  $("#pmInc").onclick = () => { pmState.qty = Math.min(9, pmState.qty+1); refreshPrice(); };
+  $("#pmDec").onclick = () => { pmState.qty = Math.max(1, pmState.qty-1); refreshPrice(); };
+  const nameOn = $("#pmNameOn"), nameIn = $("#pmName");
+  const syncName = () => { pmState.name = nameOn.checked ? nameIn.value.trim() : ""; refreshPrice(); };
+  nameOn.onchange = () => { if(nameOn.checked) nameIn.focus(); syncName(); };
+  nameIn.oninput = () => { if(nameIn.value.trim()) nameOn.checked = true; syncName(); };
+  $("#pmAdd").onclick = () => { addToCart(p.id,{color:pmState.color, babyName:pmState.name, qty:pmState.qty}); closeAll(); openCart(); };
+}
+
+$("#grid").addEventListener("click", e => {
+  const add = e.target.closest("[data-add]");
+  if (add){ e.stopPropagation(); addToCart(add.dataset.add); return; }
+  const open = e.target.closest("[data-open]");
+  if (open) openProduct(open.dataset.open);
+});
+$("#grid").addEventListener("keydown", e => {
+  const open = e.target.closest("[data-open]");
+  if (open && (e.key==="Enter" || e.key===" ")){ e.preventDefault(); openProduct(open.dataset.open); }
+});
+
+/* =========================================================
+   7. NAPLATA (mock — backend se kači ovdje)
+   ========================================================= */
+const api = {
+  // TODO(BE): POST /api/orders  -> {orderId}
+  createOrder(payload){
+    return new Promise(res => setTimeout(() => res({
+      orderId: "MJ-" + String(Math.floor(1000 + Math.random()*8999))
+    }), 900));
+  }
+};
+
+function checkoutHTML(){
+  const sub = subTotal(), ship = sub>=FREE_FROM ? 0 : SHIP_COST;
+  return `<div class="modal-info" style="grid-column:1/-1;max-width:640px;margin-inline:auto;width:100%">
+    <span class="eyebrow">Korak 2 od 2</span>
+    <h3 style="font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:6px">Podaci za dostavu</h3>
+    <p style="color:var(--muted);font-size:.93rem;margin-bottom:20px">Plaćanje je pouzećem ili uplatnicom — ništa se ne naplaćuje sada.</p>
+    <form id="coForm" novalidate>
+      <div class="form-row"><div class="field"><label for="c-ime">Ime i prezime</label><input class="input" id="c-ime" required></div>
+      <div class="field"><label for="c-tel">Telefon</label><input class="input" id="c-tel" inputmode="tel" required></div></div>
+      <div class="field"><label for="c-mail">Email</label><input class="input" id="c-mail" type="email" required></div>
+      <div class="field"><label for="c-adr">Adresa</label><input class="input" id="c-adr" required></div>
+      <div class="form-row"><div class="field"><label for="c-grad">Grad</label><input class="input" id="c-grad" required></div>
+      <div class="field"><label for="c-ptt">Poštanski broj</label><input class="input" id="c-ptt" inputmode="numeric" required></div></div>
+      <div class="field"><label for="c-nap">Napomena (neobavezno)</label><textarea class="input" id="c-nap" style="min-height:76px" placeholder="Poruka na čestitki, željeni rok…"></textarea></div>
+      <div class="totals" style="margin:18px 0 6px">
+        <div><span>Međuzbir</span><span class="mono">${fmt(sub)}</span></div>
+        <div><span>Dostava</span><span class="mono">${ship===0?"besplatno":fmt(ship)}</span></div>
+        <div class="grand"><span>Ukupno</span><span>${fmt(sub+ship)}</span></div>
+      </div>
+      <button class="btn btn-primary btn-block" id="coSend" type="submit">Pošalji narudžbu</button>
+      <p class="fineprint" style="color:var(--muted)">Slanjem narudžbe potvrđujete uvjete prodaje. Račun stiže uz paket.</p>
+    </form>
+  </div>`;
+}
+
+$("#checkout").onclick = () => {
+  if (!cart.length) return;
+  closeAll(); openModal(checkoutHTML());
+  // dark inputs are on dark bg only — force light theme inside modal
+  $$("#pmIn .input").forEach(i => { i.style.background="#fff"; i.style.borderColor="var(--line)"; i.style.color="var(--ink)"; });
+  $$("#pmIn label").forEach(l => l.style.color="var(--muted)");
+  $("#coForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const req = ["c-ime","c-tel","c-mail","c-adr","c-grad","c-ptt"];
+    const bad = req.filter(id => !$("#"+id).value.trim());
+    if (bad.length){ $("#"+bad[0]).focus(); toast("Popunite obavezna polja"); return; }
+    const btn = $("#coSend"); btn.disabled = true; btn.textContent = "Šaljem…";
+    const order = await api.createOrder({
+      items: cart.map(i => ({id:i.id, qty:i.qty, color:i.color, babyName:i.babyName})),
+      customer: Object.fromEntries(req.map(id => [id.slice(2), $("#"+id).value.trim()])),
+      note: $("#c-nap").value.trim(),
+      total: subTotal() + (subTotal()>=FREE_FROM?0:SHIP_COST)
+    });
+    cart = []; renderCart();
+    $("#pmIn").innerHTML = `<div class="modal-info" style="grid-column:1/-1;text-align:center;padding:clamp(34px,6vw,64px)">
+      <div style="width:66px;height:66px;border-radius:50%;background:var(--peri-soft);color:var(--peri-deep);display:grid;place-items:center;margin:0 auto 20px">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h3 style="font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:10px">Narudžba je zaprimljena</h3>
+      <p style="color:var(--muted);max-width:44ch;margin-inline:auto">Broj narudžbe <b class="mono">${order.orderId}</b>. Potvrdu i skicu šaljemo na email u roku od 24 sata, prije nego što šivanje počne.</p>
+      <button class="btn btn-primary" style="margin-top:26px" id="doneBtn">Nazad na kolekciju</button>
+    </div>`;
+    $("#doneBtn").onclick = closeAll;
+  });
+};
+
+/* =========================================================
+   8. FORME
+   ========================================================= */
+$("#customForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target;
+  if (!f.ime.value.trim() || !f.email.value.trim() || !f.opis.value.trim()){ toast("Popunite ime, email i opis"); return; }
+  // TODO(BE): POST /api/inquiries
+  f.reset(); toast("Upit je poslan — javljamo se u 24h");
+});
+$("#newsForm").addEventListener("submit", e => { e.preventDefault(); e.target.reset(); toast("Prijavljeni ste na newsletter"); });
+
+/* =========================================================
+   9. HEADER, REVEAL
+   ========================================================= */
+const hdr = $("#hdr");
+const onScroll = () => hdr.classList.toggle("solid", window.scrollY > 40);
+onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
+
+const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }), {threshold:.12});
+$$(".rv").forEach(el => io.observe(el));
+
+/* =========================================================
+   10. USPAVANKA (Web Audio, music-box ton)
+   ========================================================= */
+const lull = (() => {
+  let ctx = null, timer = null, on = false;
+  const N = {C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392.00,A4:440.00,C5:523.25,G3:196.00};
+  const MEL = [ // "Ah! vous dirai-je, maman" (tradicionalna)
+    [N.C4,0],[N.C4,.55],[N.G4,1.1],[N.G4,1.65],[N.A4,2.2],[N.A4,2.75],[N.G4,3.3],
+    [N.F4,4.4],[N.F4,4.95],[N.E4,5.5],[N.E4,6.05],[N.D4,6.6],[N.D4,7.15],[N.C4,7.7]
+  ];
+  const LOOP = 9.2;
+  function note(f,t){
+    const o = ctx.createOscillator(), g = ctx.createGain(), o2 = ctx.createOscillator();
+    o.type="triangle"; o.frequency.value=f;
+    o2.type="sine"; o2.frequency.value=f*2; 
+    const g2 = ctx.createGain(); g2.gain.value=.18; o2.connect(g2); g2.connect(g);
+    g.gain.setValueAtTime(.0001,t);
+    g.gain.exponentialRampToValueAtTime(.16,t+.012);
+    g.gain.exponentialRampToValueAtTime(.0001,t+1.5);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(t); o.stop(t+1.6); o2.start(t); o2.stop(t+1.6);
+  }
+  function schedule(){ const t0 = ctx.currentTime + .05; MEL.forEach(([f,t]) => note(f, t0+t)); }
+  return {
+    toggle(btn,label){
+      if (!on){
+        ctx = ctx || new (window.AudioContext||window.webkitAudioContext)();
+        ctx.resume(); schedule(); timer = setInterval(schedule, LOOP*1000);
+        on = true; btn.classList.add("playing"); btn.setAttribute("aria-pressed","true"); label.textContent = "Utišaj";
+      } else {
+        clearInterval(timer); if (ctx) ctx.close(); ctx = null;
+        on = false; btn.classList.remove("playing"); btn.setAttribute("aria-pressed","false"); label.textContent = "Pusti uspavanku";
+      }
+    }
+  };
+})();
+$("#lull").onclick = e => lull.toggle($("#lull"), $("#lullLabel"));
+
+})();
+</script>
+</body>
+</html>
